@@ -47,16 +47,18 @@ const ZoomControls = () => {
 
   const handleZoomIn = () => {
     const currentZoom = map.getZoom();
-    map.setZoom(currentZoom + 0.5, { animate: true });
+    console.log(`Zoom In: ${currentZoom}`);
+    map.setZoom(currentZoom + 1, { animate: true });
   };
 
   const handleZoomOut = () => {
     const currentZoom = map.getZoom();
-    map.setZoom(currentZoom - 0.5, { animate: true });
+    console.log(`Zoom Out: ${currentZoom}`);
+    map.setZoom(currentZoom - 1, { animate: true });
   };
 
   return (
-    <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 10 }}>
+    <div style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 1000 }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
         <button
           onClick={handleZoomIn}
@@ -65,12 +67,13 @@ const ZoomControls = () => {
             height: '40px',
             backgroundColor: 'blue',
             color: 'white',
-            border: 'none',
+            border: '2px solid black', // Borde para visibilidad
             borderRadius: '50%',
             fontSize: '24px',
             fontWeight: 'bold',
             cursor: 'pointer',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+            zIndex: 1001, // Asegúrate de que el z-index sea alto
           }}
         >
           +
@@ -82,12 +85,13 @@ const ZoomControls = () => {
             height: '40px',
             backgroundColor: 'blue',
             color: 'white',
-            border: 'none',
+            border: '2px solid black', // Borde para visibilidad
             borderRadius: '50%',
             fontSize: '24px',
             fontWeight: 'bold',
             cursor: 'pointer',
             boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)',
+            zIndex: 1001, // Asegúrate de que el z-index sea alto
           }}
         >
           -
