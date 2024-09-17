@@ -1,0 +1,66 @@
+/* src/components/markers/Gallery.css */
+.gallery-container {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    overflow-y: auto;
+    z-index: 1001;
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .year-selector {
+    margin-bottom: 20px;
+  }
+  
+  .year-selector button {
+    margin-right: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .year-selector button.active {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .image-item {
+    width: 200px;
+    text-align: center;
+  }
+  
+  .image-item img {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .image-description {
+    margin-top: 5px;
+    font-size: 14px;
+  }
+  

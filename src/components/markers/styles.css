@@ -1,0 +1,63 @@
+.hovered-icon {
+    filter: brightness(1.2);
+    transition: filter 0.3s ease;
+  }
+  
+  .fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* Personalización del popup */
+  .custom-popup .leaflet-popup-content-wrapper {
+    background-color: #f8f9fabd;
+    border-radius: 22px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+  }
+  
+  .custom-popup .leaflet-popup-tip {
+    background-color: #f8f9fa;
+  }
+  
+  /* Estilos del contenido del popup */
+  .popup-content {
+    text-align: center;
+  }
+  
+  .popup-content h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: #000000;
+  }
+  
+  /* Estilos del botón moderno */
+  .custom-button {
+    background-color: #ffffff;
+    color: rgb(4, 4, 4);
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(14, 14, 14, 0.4);
+  }
+  
+  .custom-button:hover {
+    background-color: #d5d5d5;
+  }
+  
+  .custom-button:active {
+    background-color: #b8b8b8;
+  }
+  
