@@ -6,7 +6,7 @@ import Gallery from '../gallery';
 import 'leaflet/dist/leaflet.css';
 import '../markers/styles.css';
 
-const Markers = ({ position, iconUrl, popupContent, popupImageUrl, isVisible }) => {
+const Markers = ({ position, iconUrl, popupContent, popupImageUrl, galleryData, isVisible }) => {
   const [hover, setHover] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
@@ -18,28 +18,6 @@ const Markers = ({ position, iconUrl, popupContent, popupImageUrl, isVisible }) 
     popupAnchor: [0, -50],
     className: hover ? 'hovered-icon' : '',
   });
-
-  // Datos de imágenes por año
-  // Datos de imágenes por año
-  // Datos de imágenes por año
-  // Datos de imágenes por año
-  // Datos de imágenes por año
-  // Datos de imágenes por año
-  // Datos de imágenes por año
-  // Datos de imágenes por año
-  const historicalImages = [
-    {
-      years: {
-        '1957': [
-          { src: '/images/iglesia/1957.jpg', description: 'Iglesia en 1957' }
-        ],
-        '2010': [
-          { src: '/images/iglesia/2010.jpg', description: 'Iglesia en 2010' }
-        ],
-      }
-    },
-    // Agrega más conjuntos de imágenes aquí
-  ];
 
   return (
     <Marker
@@ -82,7 +60,7 @@ const Markers = ({ position, iconUrl, popupContent, popupImageUrl, isVisible }) 
       )}
       {showGallery && (
         <Gallery
-          images={historicalImages}
+          images={galleryData}
           onClose={() => setShowGallery(false)}
         />
       )}

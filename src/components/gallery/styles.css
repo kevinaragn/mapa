@@ -1,66 +1,117 @@
-/* src/components/markers/Gallery.css */
+/* Contenedor principal del layout con sidebar y contenido */
+.layout {
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Sidebar de 250px y contenido restante */
+  height: 100vh;
+  position: relative; /* Para asegurarse de que los elementos internos se ajusten */
+}
+
+/* Fondo oscuro transparente para la galería */
+.gallery-overlay {
+  position: fixed;
+  top: 0;
+  left: 250px; /* Se ajusta para empezar después del sidebar */
+  width: calc(100vw - 250px); /* Se resta el ancho del sidebar para evitar que lo pise */
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo oscuro con transparencia */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Contenedor interno de la galería */
 .gallery-container {
-    position: fixed;
-    top: 10%;
-    left: 10%;
-    right: 10%;
-    bottom: 10%;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;
-    z-index: 1001;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .year-selector {
-    margin-bottom: 20px;
-  }
-  
-  .year-selector button {
-    margin-right: 10px;
-    padding: 10px;
-    border: none;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .year-selector button.active {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  .image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  
-  .image-item {
-    width: 200px;
-    text-align: center;
-  }
-  
-  .image-item img {
-    width: 100%;
-    border-radius: 10px;
-  }
-  
-  .image-description {
-    margin-top: 5px;
-    font-size: 14px;
-  }
-  
+  background-color: rgba(30, 30, 30, 0.9);
+  padding: 40px;
+  border-radius: 10px;
+  width: 80%; /* Ajustar el ancho para ocupar parte de la segunda columna */
+  height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Botón de cerrar */
+.close-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.close-button:hover {
+  background-color: #ff1a1a;
+}
+
+/* Selector de años */
+.year-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.year-selector button {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  padding: 10px;
+  margin: 0 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.year-selector button.active {
+  background-color: white;
+  color: black;
+}
+
+.year-selector button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Grid de imágenes con imágenes a la izquierda y descripción a la derecha */
+.image-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.image-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+/* Asegurar que la imagen siempre esté alineada a la izquierda */
+.image-item img {
+  max-width: 40%;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 20px; /* Separar la imagen de la descripción */
+}
+
+.image-description-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.image-description {
+  color: white;
+  font-size: 16px;
+  line-height: 1.5;
+}
