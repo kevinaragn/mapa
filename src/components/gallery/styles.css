@@ -18,21 +18,27 @@
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  cursor: default; /* Cambia el cursor a puntero normal */
+
+  overflow: hidden; /* Asegurarse de que no haya scroll en la galería */
 }
 
 /* Contenedor interno de la galería */
 .gallery-container {
   background-color: rgba(30, 30, 30, 0.9);
-  padding: 40px;
+  padding: 50px;
   border-radius: 10px;
   width: 80%; /* Ajustar el ancho para ocupar parte de la segunda columna */
-  height: 80vh;
-  overflow-y: auto;
+  height: 80vh; /* Ajustar la altura y evitar scroll */
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center; /* Centrar verticalmente */
   position: relative;
+  overflow: hidden; /* Eliminar el scrolleo */
+  cursor: default; /* Cambia el cursor a puntero normal */
+
 }
 
 /* Botón de cerrar */
@@ -40,7 +46,7 @@
   background-color: #ff4d4d;
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 5px;
   border-radius: 5px;
   cursor: pointer;
   position: absolute;
@@ -57,14 +63,18 @@
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  padding: 10px 0;
+
+  position: absolute;
+  top: 0; 
 }
 
 .year-selector button {
   background-color: transparent;
-  border: 2px solid white;
+  border: 3px solid white;
   color: white;
-  padding: 10px;
-  margin: 0 10px;
+  padding: 15px;
+  margin: 15px 10px;
   cursor: pointer;
   border-radius: 5px;
 }
@@ -79,39 +89,99 @@
   color: black;
 }
 
-/* Grid de imágenes con imágenes a la izquierda y descripción a la derecha */
+/* Grid de imágenes y descripción */
 .image-grid {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
 }
 
+/* Centrar imagen y descripción */
 .image-item {
   display: flex;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  padding: 10px;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+  padding: 20px;
   background-color: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
+  text-align: center; /* Centrar el texto de la descripción */
 }
 
-/* Asegurar que la imagen siempre esté alineada a la izquierda */
+/* Imagen centrada */
 .image-item img {
-  max-width: 40%;
+  max-width: 80%; /* Ajustar el ancho según necesites */
+  max-height: 500px;
   height: auto;
   border-radius: 10px;
-  margin-right: 20px; /* Separar la imagen de la descripción */
+  margin-bottom: 10px; /* Separar la imagen de la descripción */
 }
 
-.image-description-container {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
+/* Contenedor de la descripción centrada */
 .image-description {
   color: white;
   font-size: 16px;
   line-height: 1.5;
+}
+
+/* Botones de navegación */
+.nav-button {
+  background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+  color: white;
+  border: none;
+  font-size: 40px; /* Aumentar el tamaño de la fuente */
+  cursor: pointer;
+  z-index: 1000; /* Asegúrate de que esté encima de otros elementos */
+  padding: 20px; /* Agregar padding para hacer los botones más grandes */
+  border-radius: 50%; /* Hacer los botones redondeados */
+  transition: background-color 0.3s, transform 0.3s; /* Efecto de transición */
+  position: absolute; /* Fijar la posición */
+  top: 50%; /* Centrar verticalmente */
+}
+
+/* Botones a la izquierda */
+.nav-button.left {
+  left: 10px; /* Posición fija a la izquierda */
+}
+
+/* Botones a la derecha */
+.nav-button.right {
+  right: 10px; /* Posición fija a la derecha */
+}
+
+/* Efecto hover para los botones */
+.nav-button:hover {
+  background-color: rgba(255, 255, 255, 0.3); /* Cambiar color de fondo al hacer hover */
+  transform: scale(1.1); /* Aumentar ligeramente el tamaño del botón */
+}
+
+/* Ajustar la navegación de la imagen para que use flex */
+.image-navigation {
+  display: flex; /* Usa flex para alinear los botones y la imagen */
+  align-items: center; /* Centra verticalmente los elementos */
+  position: relative; /* Para que los botones se posicionen relativos a este contenedor */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+}
+
+.image-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1; /* Permitir que este contenedor crezca y ocupe el espacio disponible */
+  justify-content: center; /* Centrar verticalmente el contenido */
+}
+/* Estilos básicos para fade in */
+.fade-in-active {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.5s forwards;
+}
+
+/* Animación de fade in */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
