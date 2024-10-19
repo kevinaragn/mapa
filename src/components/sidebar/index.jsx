@@ -18,8 +18,10 @@ const Sidebar = () => {
         zIndex: 1000, // Asegúrate de que esté encima del mapa
       }}
     >
-      <h2>Sidebar</h2>
-      <p>Contenido adicional aquí...</p>
+      <h2>San Miguel Antiguo</h2>
+      <p>Recopilacion de fotos antiguas de el centro de San Miguel desde la calle Irigoin
+        hasta Pardo</p>
+      <p>Tecnologias usadas: Leaflet y React</p>
       {/* Agrega más contenido según sea necesario */}
     </div>
   );

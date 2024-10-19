@@ -1,12 +1,12 @@
 // src/components/map/MapComponent.jsx
 import React from 'react';
-import { MapContainer, ImageOverlay } from 'react-leaflet';
+import { MapContainer, ImageOverlay, useMap } from 'react-leaflet';
 import Markers from '../markers/index'; // Importa el componente del marcador
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import SetInitialView from '../setInitialView/index'; // Importa el nuevo componente
 
-const bounds = [[0, 0], [4320, 8192]];
+const bounds = [[0, 0], [2394, 8192]];
 
 const markersData = [
   {
@@ -42,6 +42,11 @@ const markersData = [
           
           '1965': [
             { src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215702/1965_waw62y.jpg',
+               description: '' },
+          ],
+          
+          '1968': [
+            { src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728426560/e6f657f4-fc06-43b6-9c62-e23927ef238b.png',
                description: '' },
           ],
           '1980-1990': [
@@ -144,7 +149,12 @@ const markersData = [
           "1910": [
             { 
               src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727471189/WhatsApp_Image_2024-09-24_at_19.20.32_vfp8wp.jpg',
-              description: `La Escuela N° 1 de San Miguel fue inaugurada un 13 de mayo de 1870, durante la presidencia de Domingo Faustino Sarmiento.Originalmente, estaba ubicada en Belgrano y Sarmiento, lugar donde hoy funciona la Biblioteca Municipal.
+              description: ``,
+            },
+          ],
+          '1912':[
+            {src: "https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215692/1915_uzcwmh.jpg",
+            description:`La Escuela N° 1 de San Miguel fue inaugurada un 13 de mayo de 1870, durante la presidencia de Domingo Faustino Sarmiento.Originalmente, estaba ubicada en Belgrano y Sarmiento, lugar donde hoy funciona la Biblioteca Municipal.
                             escuela comenzó a funcionar como la N° 4 de Moreno, ya que el partido de General Sarmiento no existía en ese momento, por la tanto dependía de este municipio vecino.
                             La matrícula inicial fue con catorce alumnos, y todos ellos eran varones.
                             Al poco tiempo se decidió trasladar la escuela a la ubicación actual.
@@ -152,10 +162,6 @@ const markersData = [
                             La escuela quedaría totalmente construida en 1912 y quedaría ubicada en el lugar donde actualmente se encuentra.
 `,
             },
-          ],
-          '1912':[
-            {src: "https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215692/1915_uzcwmh.jpg",
-            description:""}
           ],
           // Otros años...
         },
@@ -385,9 +391,15 @@ const markersData = [
     galleryData: [
       {
         years: {
-          'Año Desconocido': [
+          '1939': [
             {
               src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215701/329503821_723417819222187_4080366943625211458_n_vzcvmh.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1939 (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728429374/9f9d8056-c02a-4e11-8fdc-372611d8ffe5.png', // URL de la imagen de la galería
               description: '',
             },
           ],
@@ -688,12 +700,7 @@ const markersData = [
               description: 'Decada Aproximada',
             },
           ],
-          '2000': [
-            {
-              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215696/2005_atras_de_la_estacio_mnmmbb.jpg', // URL de la imagen de la galería
-              description: 'Decada Aproximada',
-            },
-          ],
+         
           '2005': [
             {
               src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215696/2005_atras_de_la_estacio_mnmmbb.jpg', // URL de la imagen de la galería
@@ -1495,6 +1502,12 @@ Se aprecia el comiezo del Boulevard de la Av Leon Gallardo y Belgrano. -Horacio 
               description: 'Vista desde edificio',
             },
           ],
+          '1970': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216191/Fotografia_tomada_desde_edificio_de_Italia_1213_colorizada_p8uhud.jpg', // URL de la imagen de la galería
+              description: 'Vista desde edificio. Decada aproximada',
+            },
+          ],
           
           // Puedes agregar más años con imágenes
         },
@@ -1581,20 +1594,682 @@ Se aprecia el comiezo del Boulevard de la Av Leon Gallardo y Belgrano. -Horacio 
     galleryData: [
       {
         years: {
-          '1960': [
+          '1950': [
             {
-              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216153/303349218_5560761160679059_8785836326323720184_n_b5mgmu.jpg', // URL de la imagen de la galería
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728002224/f0bfd754-00c5-4ba3-9a42-0aeaff039da3.png', // URL de la imagen de la galería
               description: 'Decada Aproximada',
             },
           ],
-          '1960 (2)': [
+          '1980': [
             {
-              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728002022/c576acaf-04d9-4292-9256-8b0cc1e943f3.png', // URL de la imagen de la galería
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216154/415286841_1114001629960560_8439680327215863317_n_spescg.jpg', // URL de la imagen de la galería
+              description: 'Decada Aproximada',
+            },
+          ],
+          '2013': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728424639/2e82312e-7515-4409-8136-fc24e6628c4e.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [800, 5090], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Peron y Sargento Cabral', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/peroncabral/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1968': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728426369/53554b90-00a8-434d-94cb-19c92165da48.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1972': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728427333/c12302f4-65bb-43a1-a823-c9eeeb6a38b4.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1972 (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216164/1972_mirando_hacia_la_plaza_sm_tftg4j.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1970': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216164/459559756_10234148922972934_1229201311682849897_n_zhv7m1.jpg', // URL de la imagen de la galería
+              description: 'Decada Aproximada',
+            },
+          ],
+          '1980': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216164/mirando_hacia_rodriguez_pe%C3%B1a_pphk8t.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [770, 5110], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Estancia', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/estancia/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1968': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728427289/80de7881-f86d-46f5-8595-f8ef5d71d4b1.png', // URL de la imagen de la galería
+              description: 'Decada Aproximada',
+            },
+          ],
+         
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [830, 5110], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Banco', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/macro/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1968': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728428121/a4bfe42e-7bff-4ce8-8d07-5a752ca6c927.png', // URL de la imagen de la galería
+              description: 'Decada Aproximada',
+            },
+          ],
+         
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [830, 5410], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'La Farola', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/tillous/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1962': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216155/banco_galicia_de_mu%C3%B1iz_cvkxwk.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1972': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215683/1975_nwzram.jpg', // URL de la imagen de la galería
+              description: `LA “CASA ROSADA” DE LOS TILLOUS EN MUÑIZ
+En 1998 la esquina de la avenida Pte. Perón y Las Heras dejó de ser la misma. Más de 100 años de historia cayeron bajo la piqueta del llamado “progreso” para transformarse en una casa de comidas rápidas, franquicia de una multinacional denominada “Wendy’s”. Luego se instaló el restaurant “La Quintana” y actualmente “La Farola” y la perfumería “Simplicity”.
+La casa de los Tillous o “Casa Rosada” (obviamente porque estaba pintada de color rosa como la Casa de Gobierno o el Palacio San José) era un emblema de San Miguel, y estaba  ligada estrechamente a la historia de nuestro partido. Fue la primera casona importante del barrio de Muñiz.
+A partir de 1998, la “Casa Rosada” solo es un recuerdo de épocas pasadas.`,
+            },
+          ],
+          '1982': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215683/1982_exghd7.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1982 (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215683/1982_x2_pnecpo.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [830, 5570], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Peron y Conesa', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/peronyconesa/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '2021': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216163/20211_peron_946_fiey9b.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '2021 (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216152/2021_Peron_986_q8tdad.jpg', // URL de la imagen de la galería
+              description: ``,
+            },
+          ],
+          '2000': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728672590/197b58bb-577f-4ae4-9039-84b935b4d08f.png', // URL de la imagen de la galería
+              description: `Decada Aproximada`,
+            },
+          ],
+         
+      
+         
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [890, 5450], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Las Heras y Peron', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/mc/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1996': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728594885/8970a50e-39f3-46b8-8f94-5cac2f2219ae.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '2005': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728594901/4c727458-9d1e-41d7-be54-29ed2f7d5038.png', // URL de la imagen de la galería
+              description: ``,
+            },
+          ],
+         
+      
+         
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [610, 5650], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Gimnasio', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/pow/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '2000': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215694/Conesa_1288_demolido_en_2015_ion9j3.png', // URL de la imagen de la galería
+              description: 'Decada Aproximada. Demolida en 2013',
+            },
+          ],
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [610, 5770], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Plaza de las Carretas', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/plazamuniz/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1934': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728672313/e823124d-d919-4021-a9c2-49efec117bb7.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          '1954': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216173/1954_jbedew.jpg', // URL de la imagen de la galería
+              description: 'Vista hacia Av.Peron',
+            },
+          ],
+         
+          '2000': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216174/319320839_572202244913729_2000854808265298064_n_kpztqx.jpg', // URL de la imagen de la galería
               description: 'Decada Aproximada',
             },
           ],
          
           
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [770, 5850], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'San Jose y Peron', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/sanjose/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '2000': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216179/319431991_533234885348853_943866049057398143_n_jsvznx.jpg', // URL de la imagen de la galería
+              description: 'Decada Aproximada',
+            },
+          ],
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [870, 6020], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'San Jose', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/colegiosanjose/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1919': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216179/1919_v9exaw.jpg', // URL de la imagen de la galería
+              description: `La principal de las obras realizadas por don León Gallardo , fue el Asilo San José, que acogió a niños desamparados y cuyo funcionamiento se encuentra a cargo de las Hermanas Pobres Bonaerenses, fundada por la Madre Camila Rolon
+Se inauguró el 17 de marzo de 1889`,
+            },
+          ],
+          '1889': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728685996/6594b5da-db05-4185-8f24-03bac4bf103f.png', // URL de la imagen de la galería
+              description: `La principal de las obras realizadas por don León Gallardo , fue el Asilo San José, que acogió a niños desamparados y cuyo funcionamiento se encuentra a cargo de las Hermanas Pobres Bonaerenses, fundada por la Madre Camila Rolon
+Se inauguró el 17 de marzo de 1889`,
+            },
+          ],
+          'Año desconocido': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216179/419731524_10228229776522616_2625359639575711763_n_zxv3ep.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [750, 7220], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Peron y Haedo', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/peronyhaedo/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '2013': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728676048/8692e3ae-ef53-40c5-9cf5-8b3f0892fa83.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+        
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+
+      //[630, 7720]
+
+    position: [630, 7620], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Carrefour Muñiz', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/vazquez/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1933': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728677783/6689b927-dacb-4269-90bb-8fd63e1ed202.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          'Año desconocido': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215690/450339913_1224970862196969_683635746110830884_n_aoi3kz.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          'Año desconocido (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215690/450346655_1224970998863622_4423694008286328072_n_vq8x1a.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1980': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728681818/33c4287f-80ed-4d97-bf33-44ef98a2754c.png', // URL de la imagen de la galería
+              description: 'Decada aproximada',
+            },
+          ],
+          'Año desconocido (3)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215690/450346655_1224970998863622_4423694008286328072_n_vq8x1a.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+        
+          '2007': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728681801/d023bf4b-1baf-441d-bea7-63e0c4696eab.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '2007 (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728681904/fd02aec7-de9b-4a42-8cf8-bf31fc3082f7.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+        
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+
+      //[630, 7720]
+
+    position: [500, 7800], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Pardo y Richieri', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/paseonorte/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1972': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216140/1970_g96jtn.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1972(2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216141/457289541_1035427721450813_2076935893314303749_n_je3wlq.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1916': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728682399/e18b1b4e-11a5-4c77-a374-ac72fd040005.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+
+         
+          
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+
+      //[630, 7720]
+
+    position: [810, 7750], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Peron y Pardo', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/trevipardo/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1962': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216186/1962_ma5lqn.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '2013': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728683658/18120240-e99e-461f-887e-8bf55a889b00.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [820, 6400], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Peron y Saavedra', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/torreon/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1933': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728684975/397e2112-d66f-40d8-b17b-f18d4103949b.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+          '1933 (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728684949/1b4d8dc6-2285-4bdf-9411-1097838296e2.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          '1980': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216162/437728019_1174885963872126_7272819434351367091_n_ztefe2.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          '1980 (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216161/437386581_1174885970538792_7314388519289259936_n_yduxds.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          '1980 (3)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216161/437387371_1174886117205444_3023764062576678963_n_z464ir.jpg', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+         
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [750, 6350], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Peron y Saavedra', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/pizzalibre/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1960': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216161/383337922_845557347104519_1550706420223968267_n_tqhpxm.jpg', // URL de la imagen de la galería
+              description: 'Decada Aproximada',
+            },
+          ],
+      
+         
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [750, 6390], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Peron y Saavedra', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/brot/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1980': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216161/383337922_845557347104519_1550706420223968267_n_tqhpxm.jpg', // URL de la imagen de la galería
+              description: 'Decada Aproximada',
+            },
+          ],
+      
+         
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [820, 6810], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Lo de Charly', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/charly/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          'Año desconocido': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728678972/dd6eba8b-3324-4c87-b3cc-cbc0f482460e.png', // URL de la imagen de la galería
+              description: '',
+            },
+          ],
+      
+         
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [1070, 3885], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Bingo', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/bingo/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          'Año desconocido': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215685/447706547_7789035831184903_2084047295973514450_n_rvxfuv.jpg', // URL de la imagen de la galería
+              description: `La iglesia luterana estuvo desde el año 1925 hasta 1990... Luego de su demolición, se construyó un Shopping y años después el actual Bingo`
+            },
+          ],
+          'Año desconocido (2)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215686/447870829_7789036084518211_3817369695329715364_n_cjh1ws.jpg', // URL de la imagen de la galería
+              description: `La iglesia luterana estuvo desde el año 1925 hasta 1990... Luego de su demolición, se construyó un Shopping y años después el actual Bingo`
+            },
+          ],
+          'Año desconocido (3)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215685/242532207_383499003310358_2990057469740973381_n_pn1fcf.jpg', // URL de la imagen de la galería
+              description: `La iglesia luterana estuvo desde el año 1925 hasta 1990... Luego de su demolición, se construyó un Shopping y años después el actual Bingo`
+            },
+          ],
+          'Año desconocido (4)': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727215686/447709869_7789035507851602_7241466093749171274_n_awziyd.jpg', // URL de la imagen de la galería
+              description: `La iglesia luterana estuvo desde el año 1925 hasta 1990... Luego de su demolición, se construyó un Shopping y años después el actual Bingo`
+            },
+          ],
+      
+         
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  
+  {
+    position: [500,4000], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Edificio Esmeralda', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/esmeralda/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1980': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1728931531/178684f6-5295-48db-9457-a5459983a26b.png', // URL de la imagen de la galería
+              description: `Vista panoramica desde el edificio `
+            },
+          ],
+         
+        
+         
+          // Puedes agregar más años con imágenes
+        },
+      },
+    ],
+  },
+  {
+    position: [1310, 3820], // Coordenadas del marcador [latitud, longitud]
+    iconUrl: '/marker.png', // URL del ícono del marcador
+    popupContent: 'Delia y Belgrano', // Texto que aparecerá en el popup
+    popupImageUrl: 'images/deliabelgrano/marker.jpg', // URL de la imagen que aparecerá en el popup (opcional)
+    galleryData: [
+      {
+        years: {
+          '1960': [
+            {
+              src: 'https://res.cloudinary.com/dhc0kdmfp/image/upload/v1727216191/Belgrano_y_Delia_aprox_jvijjw.jpg', // URL de la imagen de la galería
+              description: `Decada aproximada`
+            },
+          ],
+         
+        
+         
           // Puedes agregar más años con imágenes
         },
       },
@@ -1608,7 +2283,12 @@ Se aprecia el comiezo del Boulevard de la Av Leon Gallardo y Belgrano. -Horacio 
 
 
 
-
+function ApplyBounds() {
+  const map = useMap();
+  map.setMaxBounds(bounds); // Aplicar los límites al cargar el mapa
+  map.fitBounds(bounds); // Ajusta el mapa para que encaje dentro de los límites al cargar
+  return null;
+}
 
 
 const MapComponent = () => {
@@ -1627,10 +2307,10 @@ const MapComponent = () => {
       }}
     >
       <MapContainer
-        center={[2160, 4096]}
+        center={[1733, 4096]}
         zoom={-2}
         minZoom={-1}
-        maxZoom={0}
+        maxZoom={1}
         scrollWheelZoom={true}
         dragging={true}
         style={{ height: '100%', width: '100%' }}
@@ -1640,6 +2320,8 @@ const MapComponent = () => {
         zoomControl={false}
       >
         <SetInitialView center={initialPosition} />
+
+        <ApplyBounds />
 
         <ImageOverlay url="/8k-image.jpg" bounds={bounds} />
 
@@ -1652,6 +2334,7 @@ const MapComponent = () => {
             popupImageUrl={marker.popupImageUrl}
             galleryData={marker.galleryData} // Pasamos los datos de la galería
             isVisible={true}
+            popupDirection={marker.popupDirection} 
           />
         ))}
       </MapContainer>

@@ -6,16 +6,19 @@ import Gallery from '../gallery';
 import 'leaflet/dist/leaflet.css';
 import '../markers/styles.css';
 
-const Markers = ({ position, iconUrl, popupContent, popupImageUrl, galleryData, isVisible }) => {
+const Markers = ({ position, iconUrl, popupContent, popupImageUrl, galleryData, isVisible, popupDirection = 'up'  }) => {
   const [hover, setHover] = useState(false);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [showGallery, setShowGallery] = useState(false);
 
+
+
+
   const customIcon = L.icon({
     iconUrl: iconUrl,
-    iconSize: hover ? [60, 60] : [50, 50],
-    iconAnchor: [25, 50],
-    popupAnchor: [0, -50],
+    iconSize: hover ? [50, 50] : [40, 40],
+    iconAnchor: [20, 40],
+    popupAnchor: [0, -40], // Cambia el ancla dependiendo de la dirección
     className: hover ? 'hovered-icon' : '',
   });
 
